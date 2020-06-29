@@ -1,4 +1,4 @@
-require 'telegram/bot'
+# require 'telegram/bot'
 require 'net/http'
 require 'json'
 require_relative 'bot'
@@ -15,6 +15,5 @@ class WeatherForcast
     response = Net::HTTP.get(uri)
     response = JSON.parse(response)
     response
-  end
   end
 end
