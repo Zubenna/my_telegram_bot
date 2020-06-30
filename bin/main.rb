@@ -1,4 +1,3 @@
-#!/usr/bin/ruby
 require_relative '../lib/bot.rb'
 require_relative '../lib/weather_info.rb'
 puts 'Hello! , Welcome to weather forcast telegram bot'
