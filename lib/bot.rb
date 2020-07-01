@@ -7,10 +7,9 @@ class Bot
     token = '1307559213:AAG1e-4Ep8NBCA6__SNQvBdLIym9aPMkKCk'
   Telegram::Bot::Client.run(token) do |bot|
   bot.listen do |message|
-    stop_bot = false
     case message.text
     when '/start'
-      bot.api.send_message(chat_id: message.chat.id, text: "Hello, #{message.from.first_name}, welcome to weather forcaste chat bot created by Nnamdi Emelu, this bot will give you current weather information about your selected city.", date: message.date)
+      bot.api.send_message(chat_id: message.chat.id, text: "Hello, #{message.from.first_name}, welcome to weather information bot created by Nnamdi Emelu, this bot will give you current weather information about your selected city. It will also display daily weather forcast of your selected city", date: message.date)
       bot.api.send_message(chat_id: message.chat.id, text: 'Use /start to start the bot')
       bot.api.send_message(chat_id: message.chat.id, text: 'Use /stop to stop the bot')
       bot.api.send_message(chat_id: message.chat.id, text: 'Use /forcast to display next 3hours weather forcast in your city')

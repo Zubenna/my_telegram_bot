@@ -18,10 +18,3 @@ class WeatherForcast
       city
     end
 end
-
-
-
-
-
-
-
