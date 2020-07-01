@@ -12,7 +12,7 @@ This project calls OpenWeather API to retrieve information for current weather o
 - It can display daily weather forcast with same details specified above including cloud state.
 - Bot works in telegram app installed in devices like computer, mobile phone, and tablets.
 
-## Prerequisite for Using this Bot and Getting Ready to Play
+## Prerequisite for Using this Bot and Getting Ready
 - Ensure telegram app is installed in your device and you have a telegram account.
 - Ensure Ruby is installed in your computer.
 - Create a bot token by following the guide [here](https://core.telegram.org/bots#6-botfather). I left my token for the purpose of learning and testing.
