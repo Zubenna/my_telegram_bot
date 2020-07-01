@@ -84,7 +84,7 @@ class Bot
   end
   # rubocop:enable Metrics/AbcSize,Layout/LineLength
 
-  # rubocop:disable Metrics/AbcSize,Metrics/MethodLength,Layout/LineLength
+  # rubocop:disable Metrics/AbcSize,Layout/LineLength
   def display_daily(message, response, bot)
     bot.api.send_message(chat_id: message.chat.id, text: 'Weather forcast for today', date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Timezone: #{response['timezone']}", date: message.date)
@@ -97,5 +97,5 @@ class Bot
     bot.api.send_message(chat_id: message.chat.id, text: "Longitude: #{response['lat']}", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Latitude: #{response['lon']}", date: message.date)
   end
-  # rubocop:enable Metrics/AbcSize,Metrics/MethodLength,Layout/LineLength
+  # rubocop:enable Metrics/AbcSize,Layout/LineLength
 end
