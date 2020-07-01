@@ -4,8 +4,6 @@ The aim of this project is to make a telegram bot that gives information about c
 
 My major driving force to implement this project is to simplify the process of getting accurate current and daily weather report of major cities around the world just by entering the city in the telegram app installed in your device.
 This project calls OpenWeather API to retrieve information for current weather or daily weather forcast for the chosen city. You need to provide the name of the city and your country code when prompted by the telegram app. Infomation for all the major cities in OpenWeather database can be retreived. This project helps you to know your current weather report easily from the telegram app installed in your device any time of the day.
- 
-![PROJECT: made by Nnamdi]()
 
 ## Main Features Of This Bot
 
@@ -17,7 +15,7 @@ This project calls OpenWeather API to retrieve information for current weather o
 ## Prerequisite for Using this Bot and Getting Ready to Play
 - Ensure telegram app is installed in your device and you have a telegram account.
 - Ensure Ruby is installed in your computer.
-- Create a bot token by following the guide [here] (https://core.telegram.org/bots#6-botfather). I left my token for purpose of learning and testing.
+- Create a bot token by following the guide [here](https://core.telegram.org/bots#6-botfather). I left my token for the purpose of learning and testing.
 - Fork this project and clone into your local machine/computer.
 - From your terminal change directory (cd) into my_telegram_bot folder.
 - Install ruby gems by running "bundle install" on your terminal.
@@ -28,10 +26,10 @@ This project calls OpenWeather API to retrieve information for current weather o
 ## How to Use
 - Type 'ruby bin/main.rb' in your terminal to start the telegram bot.![Start bot](image/bot_pic_one.png)
 - Launch your telegram app, type 'weather_forcaster' in your search bar and click on it to initiate communication with it.![Launch Telegram](image/bot_pic_two.png)
-- Type '/start' in your telegram and press enter to display user guide ![User guide](image/bot_pic_three.png)
+- Type '/start' in your telegram and press enter to display user guide ![User guide](image/bot_ptc_three.png)
 - Type '/forcast' in telegram and press enter, enter city e.g Tokyo, JP to display the days' weather forcast for the city. ![Get daily forcast](image/bot_pic_four.png)
 - Type '/list_city' in telegram and press enter, to display sample list of cities. ![Sample Cities](image/bot_pic_five.png)
-- Type '/current' in telegram and press enter, enter city to dispaly current weather information for the specified city. ![Get Current weather data](images/bot_pic_six.png)
+- Type '/current' in telegram and press enter, enter city to dispaly current weather information for the specified city. ![Get Current weather data](image/bot_pic_six.png)
 - Type cntrl and C in your terminal to end the bot first. Then type '/stop' in your telegram app and press enter to end the operation. ![Stop Bot](image/bot_pic_seven.png)
 
 ## Built With
