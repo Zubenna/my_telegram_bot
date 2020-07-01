@@ -31,8 +31,6 @@ class Bot
           bot.api.send_message(chat_id: message.chat.id, text: 'Enter your city and country code to get daily weather information')
           bot.api.send_message(chat_id: message.chat.id, text: 'Example Lagos, NG')
           forcast_weather(bot)
-        else
-          bot.api.send_message(chat_id: message.chat.id, text: 'Your selection is wrong:')
         end
       end
     end
@@ -81,6 +79,7 @@ class Bot
     bot.api.send_message(chat_id: message.chat.id, text: "Wind Speed: #{response['wind']['speed']}m/s", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Longitude: #{response['coord']['lon']}", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Latitude: #{response['coord']['lat']}", date: message.date)
+    Bot.new
   end
   # rubocop:enable Metrics/AbcSize,Layout/LineLength
 
@@ -96,6 +95,7 @@ class Bot
     bot.api.send_message(chat_id: message.chat.id, text: "Wind Speed: #{response['current']['wind_speed']}m/s", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Longitude: #{response['lat']}", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Latitude: #{response['lon']}", date: message.date)
+    Bot.new
   end
   # rubocop:enable Metrics/AbcSize,Layout/LineLength
 end
