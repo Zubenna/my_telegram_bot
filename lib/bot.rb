@@ -63,17 +63,18 @@ class Bot
         response = values.request_weather_data(input_city, temp_request)
         lat = response['coord']['lat']
         lon = response['coord']['lon']
-        response_2 = values.request_weather_data(input_city, request_type, lat, lon)
-        display_daily(message, response_2, bot)
+        response_two = values.request_weather_data(input_city, request_type, lat, lon)
+        display_daily(message, response_two, bot)
       end
     end
   end
-    
+
+  # rubocop:disable Metrics/AbcSize,Metrics/MethodLength,Layout/LineLength
   def display_current(message, response, bot)
     bot.api.send_message(chat_id: message.chat.id, text: 'Current weather information', date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Country code: #{response['sys']['country']}", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "City: #{response['name']}", date: message.date)
-    bot.api.send_message(chat_id: message.chat.id, text: "Tempreture: #{'%.2f' % (response['main']['temp'] - 273.15).to_s} Degree Celsius", date: message.date)
+    bot.api.send_message(chat_id: message.chat.id, text: "Tempreture: #{(response['main']['temp'] - 273.15).round(2)} Degree Celsius", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Pressure: #{response['main']['pressure']} hPa", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Humidity: #{response['main']['humidity']}%", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Visibility: #{response['visibility']}", date: message.date)
@@ -81,12 +82,14 @@ class Bot
     bot.api.send_message(chat_id: message.chat.id, text: "Longitude: #{response['coord']['lon']}", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Latitude: #{response['coord']['lat']}", date: message.date)
   end
+  # rubocop:enable Metrics/AbcSize,Metrics/MethodLength,Layout/LineLength
 
+  # rubocop:disable Metrics/AbcSize,Metrics/MethodLength,Layout/LineLength
   def display_daily(message, response, bot)
     bot.api.send_message(chat_id: message.chat.id, text: 'Weather forcast for today', date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Timezone: #{response['timezone']}", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Cloud: #{response['current']['clouds']}%", date: message.date)
-    bot.api.send_message(chat_id: message.chat.id, text: "Tempreture: #{'%.2f' % (response['current']['temp'] - 273.15).to_s} Degree Celsius", date: message.date)
+    bot.api.send_message(chat_id: message.chat.id, text: "Tempreture: #{(response['current']['temp'] - 273.15).round(2)} Degree Celsius", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Pressure: #{response['current']['pressure']} hPa", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Humidity: #{response['current']['humidity']}%", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Visibility: #{response['current']['visibility']}", date: message.date)
@@ -94,4 +97,5 @@ class Bot
     bot.api.send_message(chat_id: message.chat.id, text: "Longitude: #{response['lat']}", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Latitude: #{response['lon']}", date: message.date)
   end
+  # rubocop:enable Metrics/AbcSize,Metrics/MethodLength,Layout/LineLength
 end
