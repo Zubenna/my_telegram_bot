@@ -5,11 +5,9 @@ require_relative '../lib/weather_info.rb'
 # Add comment to run other test
 describe Bot do
   let(:bot) { Bot.new }
-   describe '#initialize' do
-     it 'Starts the Bot without error' do
-       expect(bot.class).to eql Bot
-     end
-   end
+  describe '#initialize' do
+    it 'Starts the Bot without error' do
+      expect(bot.class).to eql Bot
+    end
+  end
 end
-
-
