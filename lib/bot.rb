@@ -3,39 +3,41 @@ require 'telegram/bot'
 require_relative 'weather_info.rb'
 
 class Bot
+# rubocop:disable Metrics/AbcSize,Metrics/MethodLength,Layout/LineLength
   def initialize
     token = '1307559213:AAG1e-4Ep8NBCA6__SNQvBdLIym9aPMkKCk'
-  Telegram::Bot::Client.run(token) do |bot|
-  bot.listen do |message|
-    case message.text
-    when '/start'
-      bot.api.send_message(chat_id: message.chat.id, text: "Hello, #{message.from.first_name}, welcome to weather information bot created by Nnamdi Emelu, this bot will give you current weather information about your selected city. It will also display daily weather forcast of your selected city", date: message.date)
-      bot.api.send_message(chat_id: message.chat.id, text: 'Use /start to start the bot')
-      bot.api.send_message(chat_id: message.chat.id, text: 'Use /stop to stop the bot')
-      bot.api.send_message(chat_id: message.chat.id, text: 'Use /forcast to display next 3hours weather forcast in your city')
-      bot.api.send_message(chat_id: message.chat.id, text: 'Use /list_city to list sample cities')
-      bot.api.send_message(chat_id: message.chat.id, text: 'Use /current to type in your city following the format, [City, Country code]. see list_city for example' )
-      bot.api.send_message(chat_id: message.chat.id, text: 'Make one selection, stop bot after display', date: message.date)
-    when '/stop'
-      bot.api.send_message(chat_id: message.chat.id, text: "Bye, #{message.from.first_name}", date: message.date)
-    when '/list_city'
-      values = WeatherForcast.new
-      list = values.city_list
-      bot.api.send_message(chat_id: message.chat.id, text: "#{list}", date: message.date)
-    when '/current'
-      bot.api.send_message(chat_id: message.chat.id, text: 'Enter your city and country code to get current weather information')
-      bot.api.send_message(chat_id: message.chat.id, text: 'Example Lagos, NG')
-      get_city(bot)
-    when '/forcast'
-      bot.api.send_message(chat_id: message.chat.id, text: 'Enter your city and country code to get daily weather information')
-      bot.api.send_message(chat_id: message.chat.id, text: 'Example Lagos, NG')
-      forcast_weather(bot)
-    else
-      bot.api.send_message(chat_id: message.chat.id, text: "Your selection is wrong:")
+    Telegram::Bot::Client.run(token) do |bot|
+      bot.listen do |message|
+        case message.text
+        when '/start'
+        bot.api.send_message(chat_id: message.chat.id, text: "Hello, #{message.from.first_name}, welcome to weather information bot created by Nnamdi Emelu, this bot will give you current weather information about your selected city. It will also display daily weather forcast of your selected city", date: message.date)
+        bot.api.send_message(chat_id: message.chat.id, text: 'Use /start to start the bot')
+        bot.api.send_message(chat_id: message.chat.id, text: 'Use /stop to stop the bot')
+        bot.api.send_message(chat_id: message.chat.id, text: 'Use /forcast to display next 3hours weather forcast in your city')
+        bot.api.send_message(chat_id: message.chat.id, text: 'Use /list_city to list sample cities')
+        bot.api.send_message(chat_id: message.chat.id, text: 'Use /current to type in your city following the format, [City, Country code]. see list_city for example')
+        bot.api.send_message(chat_id: message.chat.id, text: 'Make one selection, stop bot after display', date: message.date)
+        when '/stop'
+        bot.api.send_message(chat_id: message.chat.id, text: "Bye, #{message.from.first_name}", date: message.date)
+        when '/list_city'
+        values = WeatherForcast.new
+        list = values.city_list
+        bot.api.send_message(chat_id: message.chat.id, text: list.to_s, date: message.date)
+        when '/current'
+        bot.api.send_message(chat_id: message.chat.id, text: 'Enter your city and country code to get current weather information')
+        bot.api.send_message(chat_id: message.chat.id, text: 'Example Lagos, NG')
+        get_city(bot)
+        when '/forcast'
+        bot.api.send_message(chat_id: message.chat.id, text: 'Enter your city and country code to get daily weather information')
+        bot.api.send_message(chat_id: message.chat.id, text: 'Example Lagos, NG')
+        forcast_weather(bot)
+        else
+        bot.api.send_message(chat_id: message.chat.id, text: 'Your selection is wrong:')
+        end
+      end
     end
-    end
- end
- end
+  end
+# rubocop:enable Metrics/AbcSize,Metrics/MethodLength,Layout/LineLength
   def get_city(bot)
       bot.listen do |message|
       case message
@@ -48,6 +50,7 @@ class Bot
       end
     end
   end
+
     def forcast_weather(bot)
       bot.listen do |message|
         case message
