@@ -79,13 +79,13 @@ class Bot
 
   # rubocop:disable Metrics/AbcSize,Layout/LineLength,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity,Style/ConditionalAssignment
   def display_info(message, response, bot, info_type)
-    info_type.eql?('daily') ? temp_value = (response['current']['temp'] - 273.15).round(2): temp = (response['main']['temp'] - 273.15).round(2)
-    info_type.eql?('daily') ? presu = response['current']['pressure']: presu = response['main']['pressure']
-    info_type.eql?('daily') ? humid = response['current']['humidity']: humid = response['main']['humidity']
-    info_type.eql?('daily') ? visib = response['current']['visibility']: visib = response['visibility']
-    info_type.eql?('daily') ? wind = response['current']['wind_speed']: wind = response['wind']['speed']
-    info_type.eql?('daily') ? lat = response['lat']: lat = response['coord']['lat']
-    info_type.eql?('daily') ? lon = response['lon']: lon = response['coord']['lon']
+    info_type.eql?('daily') ? temp = (response['current']['temp'] - 273.15).round(2) : temp = (response['main']['temp'] - 273.15).round(2)
+    info_type.eql?('daily') ? presu = response['current']['pressure'] : presu = response['main']['pressure']
+    info_type.eql?('daily') ? humid = response['current']['humidity'] : humid = response['main']['humidity']
+    info_type.eql?('daily') ? visib = response['current']['visibility'] : visib = response['visibility']
+    info_type.eql?('daily') ? wind = response['current']['wind_speed'] : wind = response['wind']['speed']
+    info_type.eql?('daily') ? lat = response['lat'] : lat = response['coord']['lat']
+    info_type.eql?('daily') ? lon = response['lon'] : lon = response['coord']['lon']
     bot.api.send_message(chat_id: message.chat.id, text: "Tempreture: #{temp} Degree Celsius", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Pressure: #{presu} hPa", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Humidity: #{humid}%", date: message.date)
@@ -105,11 +105,11 @@ class Bot
   end
   # rubocop:enable Metrics/AbcSize,Layout/LineLength
 
-  # rubocop:disable Metrics/AbcSize,Layout/LineLength
+  # rubocop:disable Layout/LineLength
   def some_current_data(message, response, bot)
     bot.api.send_message(chat_id: message.chat.id, text: 'Current weather information', date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Country code: #{response['sys']['country']}", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "City: #{response['name']}", date: message.date)
   end
-  # rubocop:enable Metrics/AbcSize,Layout/LineLength
+  # rubocop:enable Layout/LineLength
 end
