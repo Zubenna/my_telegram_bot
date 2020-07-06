@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'telegram/bot'
 require_relative 'weather_info.rb'
+require_relative 'keys.rb'
 
 class Bot
   # rubocop:disable Metrics/AbcSize,Metrics/MethodLength,Layout/LineLength
@@ -91,7 +92,7 @@ class Bot
     bot.api.send_message(chat_id: message.chat.id, text: "Wind Speed: #{wind}m/s", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Latitude: #{lat}", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Longitude: #{lon}", date: message.date)
-    Bot.new(openweather_key)
+    Bot.new(telegram_token, weather_key)
   end
   # rubocop:enable Metrics/AbcSize,Layout/LineLength
 
