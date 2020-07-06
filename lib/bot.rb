@@ -4,9 +4,11 @@ require_relative 'weather_info.rb'
 
 class Bot
   # rubocop:disable Metrics/AbcSize,Metrics/MethodLength,Layout/LineLength
-  def initialize
-    token = '1307559213:AAG1e-4Ep8NBCA6__SNQvBdLIym9aPMkKCk'
-    Telegram::Bot::Client.run(token) do |bot|
+  attr_reader :telegram_token, :openweather_key
+  def initialize(token_telegram, key_openweather)
+    @telegram_token = token_telegram
+    @openweather_key = key_openweather
+      Telegram::Bot::Client.run(telegram_token) do |bot|
       bot.listen do |message|
         case message.text
         when '/start'
@@ -20,7 +22,7 @@ class Bot
         when '/stop'
           bot.api.send_message(chat_id: message.chat.id, text: "Bye, #{message.from.first_name}", date: message.date)
         when '/list_city'
-          values = WeatherForcast.new
+          values = WeatherForcast.new(openweather_key)
           list = values.city_list
           bot.api.send_message(chat_id: message.chat.id, text: list.to_s, date: message.date)
         when '/current'
@@ -43,8 +45,9 @@ class Bot
       when Telegram::Bot::Types::Message
         request_type = 'current'
         input_city = message.text
-        values = WeatherForcast.new
+        values = WeatherForcast.new(openweather_key)
         response = values.request_weather_data(input_city, request_type)
+        # puts response
         some_current_data(message, response, bot)
         display_info(message, response, bot, request_type)
       end
@@ -58,7 +61,7 @@ class Bot
         request_type = 'daily'
         temp_request = 'current'
         input_city = message.text
-        values = WeatherForcast.new
+        values = WeatherForcast.new(openweather_key)
         response = values.request_weather_data(input_city, temp_request)
         lat = response['coord']['lat']
         lon = response['coord']['lon']
@@ -86,7 +89,7 @@ class Bot
     bot.api.send_message(chat_id: message.chat.id, text: "Wind Speed: #{wind}m/s", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Latitude: #{lat}", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Longitude: #{lon}", date: message.date)
-    Bot.new
+    Bot.new(telegram_token, openweather_key)
   end
   # rubocop:enable Metrics/AbcSize,Layout/LineLength
 
