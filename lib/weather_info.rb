@@ -25,7 +25,7 @@ class WeatherForcast
   end
 
   private
-  
+
   def get_weather_data(url)
     uri = URI(url)
     response = Net::HTTP.get(uri)
