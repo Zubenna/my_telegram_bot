@@ -16,7 +16,7 @@ class Bot
           bot.api.send_message(chat_id: message.chat.id, text: 'Use /start to start the bot')
           bot.api.send_message(chat_id: message.chat.id, text: 'Use /stop to stop the bot')
           bot.api.send_message(chat_id: message.chat.id, text: 'Use /forcast to display next 3hours weather forcast in your city')
-          bot.api.send_message(chat_id: message.chat.id, text: 'Use /list_city to list sample cities')
+          bot.api.send_message(chat_id: message.chat.id, text: 'Use /list_city to list sample cities and link to country codes')
           bot.api.send_message(chat_id: message.chat.id, text: 'Use /current to type in your city following the format, [City, Country code]. see list_city for example')
           bot.api.send_message(chat_id: message.chat.id, text: 'Make one selection, stop bot after display', date: message.date)
         when '/stop'
@@ -24,14 +24,17 @@ class Bot
         when '/list_city'
           values = WeatherForcast.new(openweather_key)
           list = values.city_list
+          country_code_link = 'https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes'
           bot.api.send_message(chat_id: message.chat.id, text: list.to_s, date: message.date)
+          bot.api.send_message(chat_id: message.chat.id, text: 'Click link below for list of two letter country code', date: message.date)
+          bot.api.send_message(chat_id: message.chat.id, text: "#{country_code_link}", date: message.date)
         when '/current'
           bot.api.send_message(chat_id: message.chat.id, text: 'Enter your city and country code to get current weather information')
           bot.api.send_message(chat_id: message.chat.id, text: 'Example Lagos, NG')
           get_city(bot)
         when '/forcast'
           bot.api.send_message(chat_id: message.chat.id, text: 'Enter your city and country code to get daily weather information')
-          bot.api.send_message(chat_id: message.chat.id, text: 'Example Lagos, NG')
+          bot.api.send_message(chat_id: message.chat.id, text: 'Example Madrid, ES')
           forcast_weather(bot)
         end
       end
@@ -47,7 +50,6 @@ class Bot
         input_city = message.text
         values = WeatherForcast.new(openweather_key)
         response = values.request_weather_data(input_city, request_type)
-        puts response
         some_current_data(message, response, bot)
         display_info(message, response, bot, request_type)
       end
