@@ -9,7 +9,7 @@ class Bot
   def initialize(token_telegram, key_openweather)
     @telegram_token = token_telegram
     @openweather_key = key_openweather
-      Telegram::Bot::Client.run(telegram_token) do |bot|
+    Telegram::Bot::Client.run(telegram_token) do |bot|
       bot.listen do |message|
         case message.text
         when '/start'
@@ -28,7 +28,7 @@ class Bot
           country_code_link = 'https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes'
           bot.api.send_message(chat_id: message.chat.id, text: list.to_s, date: message.date)
           bot.api.send_message(chat_id: message.chat.id, text: 'Click link below for list of two letter country code', date: message.date)
-          bot.api.send_message(chat_id: message.chat.id, text: "#{country_code_link}", date: message.date)
+          bot.api.send_message(chat_id: message.chat.id, text: country_code_link.to_s, date: message.date)
         when '/current'
           bot.api.send_message(chat_id: message.chat.id, text: 'Enter your city and country code to get current weather information')
           bot.api.send_message(chat_id: message.chat.id, text: 'Example Lagos, NG')
@@ -74,17 +74,18 @@ class Bot
       end
     end
   end
-  
+
   private
-  # rubocop:disable Metrics/AbcSize,Layout/LineLength
+
+  # rubocop:disable Metrics/AbcSize,Layout/LineLength,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity,Style/ConditionalAssignment
   def display_info(message, response, bot, info_type)
-    info_type.eql?("daily") ? temp = (response['current']['temp'] - 273.15).round(2): temp = (response['main']['temp'] - 273.15).round(2)
-    info_type.eql?("daily") ? presu = response['current']['pressure']: presu = response['main']['pressure']
-    info_type.eql?("daily") ? humid = response['current']['humidity']: humid = response['main']['humidity']
-    info_type.eql?("daily") ? visib = response['current']['visibility']: visib = response['visibility']
-    info_type.eql?("daily") ? wind = response['current']['wind_speed']: wind = response['wind']['speed']
-    info_type.eql?("daily") ? lat = response['lat']: lat = response['coord']['lat']
-    info_type.eql?("daily") ? lon = response['lon']: lon = response['coord']['lon']
+    info_type.eql?('daily') ? temp_value = (response['current']['temp'] - 273.15).round(2): temp = (response['main']['temp'] - 273.15).round(2)
+    info_type.eql?('daily') ? presu = response['current']['pressure']: presu = response['main']['pressure']
+    info_type.eql?('daily') ? humid = response['current']['humidity']: humid = response['main']['humidity']
+    info_type.eql?('daily') ? visib = response['current']['visibility']: visib = response['visibility']
+    info_type.eql?('daily') ? wind = response['current']['wind_speed']: wind = response['wind']['speed']
+    info_type.eql?('daily') ? lat = response['lat']: lat = response['coord']['lat']
+    info_type.eql?('daily') ? lon = response['lon']: lon = response['coord']['lon']
     bot.api.send_message(chat_id: message.chat.id, text: "Tempreture: #{temp} Degree Celsius", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Pressure: #{presu} hPa", date: message.date)
     bot.api.send_message(chat_id: message.chat.id, text: "Humidity: #{humid}%", date: message.date)
@@ -94,7 +95,7 @@ class Bot
     bot.api.send_message(chat_id: message.chat.id, text: "Longitude: #{lon}", date: message.date)
     Bot.new(telegram_token, weather_key)
   end
-  # rubocop:enable Metrics/AbcSize,Layout/LineLength
+  # rubocop:enable Metrics/AbcSize,Layout/LineLength,Metrics/CyclomaticComplexity,Metrics/PerceivedComplexity,Style/ConditionalAssignment
 
   # rubocop:disable Metrics/AbcSize,Layout/LineLength
   def some_daily_data(message, response, bot)
