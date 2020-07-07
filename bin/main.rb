@@ -1,5 +1,6 @@
 require_relative '../lib/bot.rb'
 require_relative '../lib/weather_info.rb'
+require_relative '../lib/keys.rb'
 puts 'Hello! , Welcome to weather forcast telegram bot'
 puts '----------------------------------------------'
 puts 'This is a bot to help you know the weather forcast and condition for different cities'
@@ -8,4 +9,4 @@ sleep(0.8)
 puts '----------------------------------------------'
 puts '...loading'
 puts 'bot is now online... use ctrl-c to stop the bot'
-Bot.new
+Bot.new(telegram_token, weather_key)

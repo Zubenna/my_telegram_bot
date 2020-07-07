@@ -1,8 +1,9 @@
 require_relative '../lib/weather_info.rb'
+require_relative '../lib/keys.rb'
 
 describe '#WeatherForcast' do
   describe '#city_list' do
-    test_weather = WeatherForcast.new
+    test_weather = WeatherForcast.new(weather_key)
     test_array = ['Lagos, NG', 'Port Harcourt, NG', 'Abuja, NG', 'Madrid, ES', 'London, UK']
     it 'Returned array should be equal to test_array' do
       expect(test_weather.city_list).to eq(test_array)
@@ -10,7 +11,7 @@ describe '#WeatherForcast' do
   end
 
   describe '#request_weather_data' do
-    test_weather = WeatherForcast.new
+    test_weather = WeatherForcast.new(weather_key)
     temp_request = 'current'
     test_city = 'Lagos, NG'
     weather_data = test_weather.request_weather_data(test_city, temp_request)
