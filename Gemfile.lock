@@ -10,20 +10,47 @@ GEM
     connection_pool (2.2.3)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
     equalizer (0.0.11)
-    faraday (1.0.1)
+    excon (0.78.0)
+    faraday (1.1.0)
       multipart-post (>= 1.2, < 3)
+      ruby2_keywords
+    http-accept (1.7.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     ice_nine (0.11.2)
     inflecto (0.0.2)
     json (2.3.0)
+    mime-types (3.3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2020.1104)
     multipart-post (2.1.1)
     net-http-persistent (4.0.0)
       connection_pool (~> 2.2)
-    telegram-bot-ruby (0.12.0)
+    netrc (0.11.0)
+    open-weather-api (0.0.7)
+      rest-client (~> 2.0)
+    openweather2 (0.1.8)
+      json
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
+    ruby2_keywords (0.0.2)
+    telegram-bot-ruby (0.14.0)
       faraday
       inflecto
       virtus
+    telegram_bot (0.0.8)
+      excon (>= 0.30.0)
+      virtus (>= 1.0.0)
     thread_safe (0.3.6)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.7)
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -36,7 +63,10 @@ PLATFORMS
 DEPENDENCIES
   json
   net-http-persistent
+  open-weather-api
+  openweather2
   telegram-bot-ruby
+  telegram_bot
 
 BUNDLED WITH
    2.1.4

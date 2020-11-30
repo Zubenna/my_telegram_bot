@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'telegram/bot'
+require 'telegram_bot/bot'
 require_relative 'weather_info.rb'
 
 class Bot
