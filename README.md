@@ -1,12 +1,10 @@
 # Weather Forcaster Telegram bot
-
 This project aims to make a telegram bot that gives information about current weather and daily weather forecast for a selected city. The project was built using ruby language.
 
 My major driving force to implement this project is to simplify the process of getting accurate current and daily weather reports of major cities around the world just by entering the city in the telegram app installed on your device.
 This project calls OpenWeather API to retrieve information for current weather or daily weather forecast for the chosen city. You need to provide the name of the city and your country code when prompted by the telegram app. This bot will also help you identify your two-letter country code if you do not know it. Information for all the major cities in the OpenWeather database can be retrieved. This project helps you to know your current weather report easily from the telegram app installed on your device any time of the day.
 
 ## Main Features Of This Bot
-
 - It can display an array of sample cities you can follow when entering your city.
 - It can display current weather information of selected city specifying details such as temperature, pressure, latitude, longitude, wind speed, humidity, visibility, your city, and country code.
 - It can display daily weather forecasts with the same details specified above including cloud state.
@@ -33,32 +31,37 @@ This project calls OpenWeather API to retrieve information for current weather o
 - Type '/current' in telegram and press enter, enter the city to display current weather information for the specified city. ![Get Current weather data](image/bot_pic_six.png)
 - Type cntrl and C in your terminal to end the bot first. Then type '/stop' in your telegram app and press enter to end the operation. ![Stop Bot](image/bot_pic_seven.png)
 
-## Built With
+## Live Version
+This bot has been deployed to Heroku. It is expected to be running without the local setup unless there is a need to log into the app for maintenance by me.
+However, you can access the live link below.
+- [Launch App](https://stark-reaches-70789.herokuapp.com/)
+- Follow the steps below
+      - Launch the Telegram app on your computer, mobile phone, or tablet.
+      - In your search bar, type weather_forcaster, click on it to launch this bot.
+      - Type /start on your message box, submit and follow the instructions to use this bot.
 
+## Built With
 - Ruby version 2.6.5.
 - Telegram/bot
-- Rspec
+- Rspec for testing
+- Hosted on Heroku
 - [OpenWeather API](https://openweathermap.org/api)
 
-## Authors
+## Author
 
 👤 **Nnamdi Emelu**
-
 - Github: [@githubhandle](https://github.com/zubenna)
 - Twitter: [@twitterhandle](https://twitter.com/zubenna)
 - Linkedin: [linkedin](https://linkedin.com/in/nnamdi-emelu-08b14340/)
 
 ## 🤝 Contributing
-
 Contributions, issues and feature requests are welcome!
 
 Feel free to check the [issues page](https://github.com/Zubenna/my_telegram_bot/issues)
 
 ## Show your support
-
 Give a ⭐️ if you like this project!
 
 ## Acknowledgments
-
 - Project inspired by Microverse Program
 
