@@ -36,9 +36,9 @@ This bot has been deployed to Heroku. It is expected to be running without the l
 However, you can access the live link below.
 - [Launch App](https://stark-reaches-70789.herokuapp.com/)
 - Follow the steps below
-      - Launch the Telegram app on your computer, mobile phone, or tablet.
-      - In your search bar, type weather_forcaster, click on it to launch this bot.
-      - Type /start on your message box, submit and follow the instructions to use this bot.
+    - Launch the Telegram app on your computer, mobile phone, or tablet.
+    - In your search bar, type weather_forcaster, click on it to launch this bot.
+    - Type /start on your message box, submit and follow the instructions to use this bot.
 
 ## Built With
 - Ruby version 2.6.5.
