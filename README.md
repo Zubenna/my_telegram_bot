@@ -1,8 +1,8 @@
 # Weather Forcaster Telegram bot
-This project aims to make a telegram bot that gives information about current weather and daily weather forecast for a selected city. The project was built using ruby language.
+This project is a telegram bot that gives information about current weather and daily weather forecast for a selected city. The project was built using ruby language.
 
 My major driving force to implement this project is to simplify the process of getting accurate current and daily weather reports of major cities around the world just by entering the city in the telegram app installed on your device.
-This project calls OpenWeather API to retrieve information for current weather or daily weather forecast for the chosen city. You need to provide the name of the city and your country code when prompted by the telegram app. This bot will also help you identify your two-letter country code if you do not know it. Information for all the major cities in the OpenWeather database can be retrieved. This project helps you to know your current weather report easily from the telegram app installed on your device any time of the day.
+This project calls OpenWeather API to retrieve information for current weather or daily weather forecast for the chosen city. You need to provide the name of the city and your country code when prompted by this bot. This bot will also help you identify your two-letter country code if you do not know it. This project helps you to know your current weather report easily from the telegram app installed on your device any time of the day.
 
 ## Main Features Of This Bot
 - It can display an array of sample cities you can follow when entering your city.
@@ -30,6 +30,9 @@ This project calls OpenWeather API to retrieve information for current weather o
 - Type '/list_city' in telegram and press enter, to display a sample list of cities. ![Sample Cities](image/bot_pic_five.png). Follow the guide to identify your country code if you do not know it.
 - Type '/current' in telegram and press enter, enter the city to display current weather information for the specified city. ![Get Current weather data](image/bot_pic_six.png)
 - Type cntrl and C in your terminal to end the bot first. Then type '/stop' in your telegram app and press enter to end the operation. ![Stop Bot](image/bot_pic_seven.png)
+
+## User Verification
+Telegram App may display a prompt to verify if you are an actual user(human) or bot. Carefully follow the instruction on your device to verify yourself. 
 
 ## Live Version
 This bot has been deployed to Heroku. It is expected to be running without the local setup unless there is a need to log into the app for maintenance by me.
