@@ -36,7 +36,7 @@ GEM
       rest-client (~> 2.0)
     openweather2 (0.1.8)
       json
-    rack (2.2.3)
+    rack (2.2.6.3)
     rack-protection (2.1.0)
       rack
     rest-client (2.1.0)
